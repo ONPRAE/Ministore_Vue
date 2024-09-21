@@ -18,6 +18,7 @@ app.use(cors({
 app.use(cookieParser());
 app.use('/api/v1', apiRouter);
 app.use('/api/v2', apiv2Router);
+app.use('/api/v1/products',apiRouter );
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpecs));
 
 const ssl_options = {

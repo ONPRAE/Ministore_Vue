@@ -11,6 +11,7 @@ const customerController = require('../controllers/customers');
 const orderController = require('../controllers/orders');
 const authController = require('../controllers/auth');
 const userController = require('../controllers/users');
+const productController = require('../controllers/products');
 
 router.post('/customers', apiLimiter, customerController.createCustomer);
 router.put('/customers/:id', apiLimiter, customerController.updateCustomer);
@@ -20,6 +21,13 @@ router.get('/customers/q/:term', apiLimiter, customerController.getCustomersByTe
 //router.get('/customers', authController.verifyToken, customerController.getCustomers);
 router.get('/customers', apiLimiter, customerController.getCustomers);
 router.post('/orders', apiLimiter, orderController.createOrder);
+
+// เส้นทางสำหรับสินค้า
+router.post('/products', apiLimiter, productController.createProduct);
+router.put('/products/:id', apiLimiter, productController.updateProduct);
+router.delete('/products/:id', apiLimiter, productController.deleteProduct);
+router.get('/products/:id', productController.getProduct);
+router.get('/products', apiLimiter, productController.getProducts);
 
 router.post('/users', userController.createUser);
 router.post('/login', authController.login);
